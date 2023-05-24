@@ -30,15 +30,18 @@ public class Character : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Ground") { anim.SetBool("isOnGround", true); _bWall = false; }
+        if (collision.gameObject.tag == "Ground") { 
+            if(rb.velocity.y <= 0) anim.SetBool("isOnGround", true); 
+            _bWall = false; 
+        }
     }
 
-    protected virtual IEnumerator defeat(float aaa)
+    protected virtual IEnumerator defeat(float animtime)
     {
         _fVec.x = 0;
         anim.SetBool("isDead", true);
 
-        yield return new WaitForSeconds(aaa);
+        yield return new WaitForSeconds(animtime);
 
         Death();
     }

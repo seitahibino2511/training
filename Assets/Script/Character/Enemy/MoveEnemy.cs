@@ -7,8 +7,9 @@ public class MoveEnemy : Character
     protected override void Start()
     {
         base.Start();
-        _fVec.x = _fSpeed;
+        _fVec.x = -_fSpeed;
         anim.SetBool("isMoving", true);
+
     }
 
     public void ChangeVec()
