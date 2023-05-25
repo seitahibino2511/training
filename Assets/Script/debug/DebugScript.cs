@@ -21,8 +21,8 @@ public class DebugScript : MonoBehaviour
     {
         
         _bMode = !_bMode;
-        if (_bMode) _rt.localPosition = new Vector3(50, 100, 0);
-        else _rt.localPosition = new Vector3(190, 100, 0);
+        if (_bMode) _rt.localPosition = new Vector3(500, 450, 0);
+        else _rt.localPosition = new Vector3(915, 450, 0);
     }
     
 }
