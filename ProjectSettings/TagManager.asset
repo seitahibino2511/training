@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - DestroyEnemy
   - Goal
+  - OutLine
   layers:
   - Default
   - TransparentFX

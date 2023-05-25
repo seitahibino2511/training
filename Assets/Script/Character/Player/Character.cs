@@ -6,7 +6,7 @@ public class Character : MonoBehaviour
 {
     protected Rigidbody2D rb;
     protected Animator anim;
-    [SerializeField] protected float _fSpeed;
+    protected float _fSpeed;
     protected Vector2 _fVec;
 
     protected bool _bWall;
@@ -19,7 +19,7 @@ public class Character : MonoBehaviour
         _fVec = new Vector2(0, 0);
     }
 
-    protected void FixedUpdate()
+    void FixedUpdate()
     {
         Vector2 vel = rb.velocity;
         vel.x = _fVec.x * _fSpeed;
@@ -36,10 +36,13 @@ public class Character : MonoBehaviour
         }
     }
 
-    protected virtual IEnumerator defeat(float animtime)
+
+    IEnumerator defeat(float animtime)
     {
         _fVec.x = 0;
         anim.SetBool("isDead", true);
+        rb.gravityScale = 0;
+        rb.velocity = new Vector3(0, 0, 0);
 
         yield return new WaitForSeconds(animtime);
 

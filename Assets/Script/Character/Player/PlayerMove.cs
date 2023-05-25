@@ -5,11 +5,18 @@ using UnityEngine;
 public class PlayerMove : Character
 {
 
-    [SerializeField] private float _fJamp;
+    private float _fJamp;
     [SerializeField] GameObject canvas;
 
     bool _bclear = false;
     bool _dead = false;
+
+    protected override void Start()
+    {
+        base.Start();
+        _fSpeed = StatusManager.Instance.GetSpeed(1);
+        _fJamp = StatusManager.Instance.GetJamp(1);
+    }
 
     // Update is called once per frame
     void Update()
@@ -51,11 +58,13 @@ public class PlayerMove : Character
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Ground") anim.SetBool("isOnGround", false);
+        if(collision.gameObject.tag == "OutLine" && !_dead) { StartCoroutine("defeat", 1.2f); _dead = true; }
     }
 
     protected override void Death()
     {
-        gameObject.SetActive(false);
+        rb.gravityScale = 0;
+        rb.gameObject.SetActive(false);
         canvas.SetActive(true);
     }
 
