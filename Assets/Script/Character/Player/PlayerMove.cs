@@ -43,7 +43,7 @@ public class PlayerMove : Character
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy") { StartCoroutine("defeat", 1.2f); _dead = true; }
+        if (collision.gameObject.tag == "Enemy") GameOver();
         if (collision.gameObject.tag == "Ground" && !anim.GetBool("isOnGround")) _bWall = true;
     }
 
@@ -58,7 +58,7 @@ public class PlayerMove : Character
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Ground") anim.SetBool("isOnGround", false);
-        if(collision.gameObject.tag == "OutLine" && !_dead) { StartCoroutine("defeat", 1.2f); _dead = true; }
+        if(collision.gameObject.tag == "OutLine" && !_dead) GameOver();
     }
 
     protected override void Death()
@@ -80,6 +80,11 @@ public class PlayerMove : Character
     {
         yield return new WaitForSeconds(animtime);
         StageManager.Instance.ChangeStageSelect();
+    }
+
+    public void GameOver()
+    {
+        StartCoroutine("defeat", 1.2f); _dead = true;
     }
 
 }

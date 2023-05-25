@@ -25,6 +25,11 @@ public class StageManager
         SceneManager.LoadScene(name);
     }
 
+    public void StageContinue()
+    {
+        string name = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(name);
+    }
     public void ChangeStageSelect()
     {
         SceneManager.LoadScene("StageSelect");
