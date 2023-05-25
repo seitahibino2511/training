@@ -1,2 +1,4 @@
-Speed,Jamp
-4,10
+ID,name,Speed,Jamp
+1,Player,10,23
+2,YelloSlim,2,0
+3,RedSlim,2,0

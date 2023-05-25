@@ -28,7 +28,7 @@ public class MoveEnemy : Character
 
     protected override void Death()
     {
-        Destroy(this.gameObject);
+        Destroy(rb.gameObject);
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)

@@ -14,7 +14,7 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = gameObject.GetComponentInParent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         _fVec = new Vector2(0, 0);
     }
